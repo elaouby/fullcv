@@ -2,7 +2,24 @@
 <meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Amr Elaouby</title>
 <meta name="robots" content="noindex,follow"/>
-<style>:root{color-scheme:light dark}html,body{height:100%}body{margin:0;display:flex;flex-direction:column;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}header{padding:10px 14px;border-bottom:1px solid #e5e7eb;display:flex;align-items:center;gap:12px;flex-wrap:wrap}header .spacer{flex:1}.btn{padding:8px 12px;border:1px solid #333;background:#fff;border-radius:10px;text-decoration:none;display:inline-flex;align-items:center;gap:6px;color:#111827}.btn svg{width:16px;height:16px;fill:#111827;flex-shrink:0}.btn img{width:16px;height:16px;object-fit:contain;flex-shrink:0}.title{display:flex;flex-direction:column;gap:6px}
+<style>:root{color-scheme:light dark}html,body{height:100%}body{margin:0;display:flex;flex-direction:column;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}header{padding:10px 14px;border-bottom:1px solid #e5e7eb;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+header {
+    justify-content: space-between;
+    align-items: stretch;
+  }
+  .title {
+    justify-content: center;
+  }
+  nav.actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    align-content: center;
+  }
+  nav.actions a.btn {
+    text-align: center;
+  }
+.btn{padding:8px 12px;border:1px solid #333;background:#fff;border-radius:10px;text-decoration:none;display:inline-flex;align-items:center;gap:6px;color:#111827}.btn svg{width:16px;height:16px;fill:#111827;flex-shrink:0}.btn img{width:16px;height:16px;object-fit:contain;flex-shrink:0}.title{display:flex;flex-direction:column;gap:6px}
 .contacts{display:flex;gap:10px}
 .icon{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border:1px solid #333;background:#fff;border-radius:999px;text-decoration:none}
 .icon img{width:18px;height:18px;object-fit:contain}
@@ -19,17 +36,15 @@ nav.actions{display:flex;gap:10px;flex-wrap:wrap}
 <header>
   <div class="title">
     <strong>Amr Elaouby</strong>
-    <div class="contacts">
-      <a class="icon" href="tel:+97470707652" aria-label="Phone Call"><img src="media/Call.svg" alt="Call"></a>
-      <a class="icon" href="https://wa.me/97470707652" target="_blank" rel="noopener" aria-label="WhatsApp"><img src="media/Whatsapp.svg" alt="WhatsApp"></a>
-      <a class="icon" href="mailto:amr@elaouby.com" aria-label="Email"><img src="media/Mail.svg" alt="Email"></a>
-    </div>
   </div>
   <div class="spacer"></div>
   <nav class="actions">
+    <a class="btn" href="tel:+97470707652" aria-label="Phone Call"><img src="media/Call.svg" alt="Call">Call</a>
+    <a class="btn" href="https://wa.me/97470707652" target="_blank" rel="noopener" aria-label="WhatsApp"><img src="media/Whatsapp.svg" alt="WhatsApp">Whatsapp</a>
+    <a class="btn" href="mailto:amr@elaouby.com" aria-label="Email"><img src="media/Mail.svg" alt="Email">Email</a>
     <a class="btn" href="https://linkedin.com/in/elaouby" rel="noopener"><img src="media/Linkedin.svg" alt="LinkedIn">LinkedIn</a>
-    <a class="btn" href="https://drive.google.com/uc?export=download&id=1y1CKlgp58-sz9mriJUU50ASc72BsCz7L" download><img src="media/PDF.svg" alt="PDF">PDF</a>
-    <a class="btn" href="https://docs.google.com/document/d/111xKlab0gXXBKDoMXxDhlMtPEc3gJEH2/export?format=docx" download><img src="media/Word.svg" alt="Word">Word</a>
+    <a class="btn" href="https://drive.google.com/uc?export=download&id=1y1CKlgp58-sz9mriJUU50ASc72BsCz7L" download><img src="media/PDF.svg" alt="PDF">↓ PDF</a>
+    <a class="btn" href="https://docs.google.com/document/d/111xKlab0gXXBKDoMXxDhlMtPEc3gJEH2/export?format=docx" download><img src="media/Word.svg" alt="Word">↓ Word</a>
   </nav>
 </header>
 <div id="stage">
