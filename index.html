@@ -54,7 +54,7 @@ if(focusBtn){focusBtn.addEventListener('click',()=>{document.body.classList.togg
      // Use Google Docs Viewer to render the first-party PDF inline.
      const ifr=document.createElement('iframe');
      ifr.id='viewer';
-     ifr.src='https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/web/viewer.html?file='+encodeURIComponent(pdfABS);
+     ifr.src='https://unpkg.com/pdfjs-dist@3.11.174/web/viewer.html?file='+encodeURIComponent(pdfABS);
      ifr.setAttribute('allow','fullscreen');
      ifr.setAttribute('referrerpolicy','no-referrer');
      host.appendChild(ifr);
