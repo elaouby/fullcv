@@ -42,37 +42,18 @@ nav.actions{display:flex;gap:10px;flex-wrap:wrap}
 const focusBtn=document.getElementById('focusBtn');
 if(focusBtn){focusBtn.addEventListener('click',()=>{document.body.classList.toggle('focus'); focusBtn.textContent=document.body.classList.contains('focus')?'Exit focus':'Focus viewer';});}
 (function(){
-  const host=document.getElementById('viewerHost');
-  if(!host) return;
-  const pdfURL='/Elaouby-CV.pdf';
-  const pdfABS = (location.origin || (location.protocol+'//'+location.host)) + pdfURL;
-  const ua=navigator.userAgent||'';
-  const isIOS=/iPad|iPhone|iPod/.test(ua) || (navigator.platform==='MacIntel' && navigator.maxTouchPoints>1);
-  const isAndroid=/Android/.test(ua);
-  if(isAndroid){
-     // Android Chrome often shows a placeholder instead of rendering PDFs in iframes.
-     // Use Google Docs Viewer to render the first-party PDF inline.
-     const ifr=document.createElement('iframe');
-     ifr.id='viewer';
-     ifr.src='https://mozilla.github.io/pdf.js/web/viewer.html?file='+encodeURIComponent(pdfABS);
-     ifr.setAttribute('allow','fullscreen');
-     ifr.setAttribute('referrerpolicy','no-referrer');
-     host.appendChild(ifr);
-   } else if(isIOS){
-     // iOS Safari can render a PDF in an iframe full-screen fairly well.
-     const ifr=document.createElement('iframe');
-     ifr.id='viewer';
-     ifr.src=pdfURL + '#toolbar=1&navpanes=0&scrollbar=1';
-     ifr.setAttribute('allow','fullscreen');
-     host.appendChild(ifr);
-   } else {
-     const obj=document.createElement('object');
-     obj.id='viewer';
-     obj.type='application/pdf';
-     obj.data=pdfURL;
-     obj.innerHTML='<p>PDF viewer unavailable. <a href="'+pdfURL+'">Open the PDF</a>.</p>';
-     host.appendChild(obj);
-   }
+const host=document.getElementById('viewerHost');
+if(!host) return;
+// Source PDF (currently first-party). Swap to the proxy URL once set up.
+const pdfURL='/Elaouby-CV.pdf';
+const pdfABS=(location.origin||(location.protocol+'//'+location.host))+pdfURL;
+// Use the same self-hosted PDF.js viewer on all platforms for consistency.
+const ifr=document.createElement('iframe');
+ifr.id='viewer';
+ifr.src='/pdfjs/web/viewer.html?file='+encodeURIComponent(pdfABS);
+ifr.setAttribute('allow','fullscreen');
+ifr.setAttribute('referrerpolicy','no-referrer');
+host.appendChild(ifr);
 })();
 </script>
 <noscript><div style="padding:12px;border-top:1px solid #e5e7eb">JavaScript required. <a href="https://drive.google.com/uc?export=download&id=1y1CKlgp58-sz9mriJUU50ASc72BsCz7L">Download the PDF</a>.</div></noscript>
