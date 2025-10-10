@@ -13,7 +13,12 @@ body.focus #viewer{display:block;position:fixed;inset:0}
 #viewer{touch-action:auto}
 @supports (-webkit-overflow-scrolling: touch){#stage{overflow:auto;-webkit-overflow-scrolling:touch}}
 nav.actions{display:flex;gap:10px;flex-wrap:wrap}
-@media(max-width:600px){nav.actions a{flex:1;text-align:center}}</style>
+@media(max-width:600px){nav.actions a{flex:1;text-align:center}}
+#stage{position:relative;flex:1;min-height:0}
+#loader{position:absolute;inset:0;display:grid;place-items:center;background:rgba(0,0,0,0.02)}
+#loader .panel{background:transparent;text-align:center;padding:18px 24px;border:1px solid #e5e7eb;border-radius:14px}
+#viewer{display:none;position:absolute;inset:0;width:100%;height:100%;border:0}
+.count{font-variant-numeric:tabular-nums;font-weight:700}</style>
 </head><body>
 <header>
   <div class="title">
@@ -31,12 +36,18 @@ nav.actions{display:flex;gap:10px;flex-wrap:wrap}
     <a class="btn" href="https://docs.google.com/document/d/111xKlab0gXXBKDoMXxDhlMtPEc3gJEH2/export?format=docx" download><img src="media/Word.svg" alt="Word">Download Word</a>
   </nav><button id="focusBtn" class="btn" style="margin-left:10px">Focus viewer</button>
 </header>
-
-<iframe id="viewer" title="CV Viewer" src="https://drive.google.com/file/d/1y1CKlgp58-sz9mriJUU50ASc72BsCz7L/preview" allow="autoplay" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+<div id="stage">
+  <div id="loader"><div class="panel">
+    <h2>Loading CV…</h2>
+    <p>Displaying in <span id="count" class="count">5</span>s</p>
+    <p class="muted">If it stalls, use the Download buttons above.</p>
+  </div></div>
+  <iframe id="viewer" title="CV Viewer" src="https://drive.google.com/file/d/1y1CKlgp58-sz9mriJUU50ASc72BsCz7L/preview" allow="autoplay" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
 <script>
 const focusBtn=document.getElementById('focusBtn');
 if(focusBtn){focusBtn.addEventListener('click',()=>{document.body.classList.toggle('focus'); focusBtn.textContent=document.body.classList.contains('focus')?'Exit focus':'Focus viewer';});}
-const v=document.getElementById('viewer'),l=document.getElementById('loader'),c=document.getElementById('count');let n=3,ok=false,done=false;
+const v=document.getElementById('viewer'),l=document.getElementById('loader'),c=document.getElementById('count');let n=5,ok=false,done=false;
 const t=setInterval(()=>{n-=1;c.textContent=Math.max(0,n);if(n<=0){clearInterval(t);done=true;show()}},1e3);
 v.addEventListener('load',()=>{ok=true;show()});
 function show(){if(done&&ok){l.style.display='none';v.style.display='block'}
