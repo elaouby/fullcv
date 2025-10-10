@@ -4,13 +4,12 @@
 <meta name="robots" content="noindex,follow"/>
 <style>:root{color-scheme:light dark}html,body{height:100%}body{margin:0;display:flex;flex-direction:column;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}header{padding:10px 14px;border-bottom:1px solid #e5e7eb;display:grid;grid-template-columns:1fr auto;align-items:stretch;gap:16px}.btn{padding:8px 12px;border:1px solid #333;background:#fff;border-radius:10px;text-decoration:none;display:inline-flex;align-items:center;gap:6px;color:#111827}.btn svg{width:16px;height:16px;fill:#111827;flex-shrink:0}.btn img{width:16px;height:16px;object-fit:contain;flex-shrink:0}.title{display:flex;flex-direction:column;justify-content:center;gap:6px}
 .title strong{font-size:1.2rem}
-nav.actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:44px;gap:10px;align-content:center;width:520px}
-nav.actions a.btn{text-align:center;justify-content:center}
+nav.actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:44px;gap:10px;align-content:center;width:min(520px,100%)}
 @media(max-width:600px){
-  header{grid-template-columns:1fr auto}
-  .title strong{font-size:1.15rem}
-  nav.actions{width:min(100%, 360px);grid-template-columns:repeat(3,1fr);grid-auto-rows:40px}
-  .btn{padding:6px 10px;font-size:.95rem}
+  header{grid-template-columns:1fr 1fr;gap:8px}
+  .title strong{font-size:1.1rem}
+  nav.actions{width:100%;grid-template-columns:repeat(3,1fr);grid-auto-rows:36px;gap:8px}
+  .btn{padding:6px 8px;font-size:.9rem}
 }
 #stage{touch-action:manipulation}
 #viewer{display:block;position:absolute;inset:0;width:100%;height:100%;border:0}
@@ -24,7 +23,6 @@ nav.actions a.btn{text-align:center;justify-content:center}
   <div class="title">
     <strong>Amr Elaouby</strong>
   </div>
-  <div class="spacer"></div>
   <nav class="actions">
     <a class="btn" href="tel:+97470707652" aria-label="Call"><img src="media/Call.svg" alt="Call">Call</a>
     <a class="btn" href="https://wa.me/97470707652" target="_blank" rel="noopener" aria-label="WhatsApp"><img src="media/Whatsapp.svg" alt="WhatsApp">Whatsapp</a>
