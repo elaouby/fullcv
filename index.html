@@ -4,9 +4,9 @@
 <meta name="robots" content="noindex,follow"/>
 <style>:root{color-scheme:light dark}html,body{height:100%}body{margin:0;display:flex;flex-direction:column;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}header{padding:10px 14px;border-bottom:1px solid #e5e7eb;display:flex;align-items:center;gap:12px;flex-wrap:wrap}header .spacer{flex:1}.btn{padding:8px 12px;border:1px solid #111827;border-radius:10px;text-decoration:none}#stage{position:relative;flex:1;min-height:0}#loader{position:absolute;inset:0;display:grid;place-items:center;background:rgba(0,0,0,0.02)}#loader .panel{text-align:center;padding:18px 24px;border:1px solid #e5e7eb;border-radius:14px}#viewer{display:none;position:absolute;inset:0;width:100%;height:100%;border:0}.count{font-variant-numeric:tabular-nums;font-weight:700}</style>
 </head><body>
-<header><strong>Amr Elaouby — CV</strong><a class="btn" href="" rel="noopener">LinkedIn</a><div class="spacer"></div><a class="btn" href="/Elaouby-CV.pdf" rel="noopener">Download PDF</a></header>
+<header><strong>Amr Elaouby — CV</strong><a class="btn" href="https://linkedin.com/in/elaouby" rel="noopener">LinkedIn</a><div class="spacer"></div><a class="btn" href="/Elaouby-CV.pdf" rel="noopener">Download PDF</a></header>
 <div id="stage"><div id="loader"><div class="panel"><h2>Loading CV…</h2><p>Displaying in <span id="count" class="count">5</span>s</p><p class="muted">If it stalls, use Download above.</p></div></div>
-<iframe id="viewer" title="CV Viewer" src="" allow="autoplay" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+<iframe id="viewer" title="CV Viewer" src="https://drive.google.com/file/d/1y1CKlgp58-sz9mriJUU50ASc72BsCz7L/preview" allow="autoplay" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
 <script>
 const v=document.getElementById('viewer'),l=document.getElementById('loader'),c=document.getElementById('count');let n=5,ok=false,done=false;
 const t=setInterval(()=>{n-=1;c.textContent=Math.max(0,n);if(n<=0){clearInterval(t);done=true;show()}},1e3);
