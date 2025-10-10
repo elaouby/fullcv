@@ -6,9 +6,6 @@
 .contacts{display:flex;gap:10px}
 .icon{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border:1px solid #333;background:#fff;border-radius:999px;text-decoration:none}
 .icon img{width:18px;height:18px;object-fit:contain}
-body.focus header{display:none}
-body.focus #stage{position:fixed;inset:0}
-body.focus #viewer{display:block;position:fixed;inset:0}
 #stage{touch-action:manipulation}
 #viewer{display:block;position:absolute;inset:0;width:100%;height:100%;border:0}
 #viewerHost{position:absolute;inset:0}
@@ -33,14 +30,12 @@ nav.actions{display:flex;gap:10px;flex-wrap:wrap}
     <a class="btn" href="https://linkedin.com/in/elaouby" rel="noopener"><img src="media/Linkedin.svg" alt="LinkedIn">LinkedIn</a>
     <a class="btn" href="https://drive.google.com/uc?export=download&id=1y1CKlgp58-sz9mriJUU50ASc72BsCz7L" download><img src="media/PDF.svg" alt="PDF">Download PDF</a>
     <a class="btn" href="https://docs.google.com/document/d/111xKlab0gXXBKDoMXxDhlMtPEc3gJEH2/export?format=docx" download><img src="media/Word.svg" alt="Word">Download Word</a>
-  </nav><button id="focusBtn" class="btn" style="margin-left:10px">Focus viewer</button>
+  </nav>
 </header>
 <div id="stage">
   <div id="viewerHost"></div>
 </div>
 <script>
-const focusBtn=document.getElementById('focusBtn');
-if(focusBtn){focusBtn.addEventListener('click',()=>{document.body.classList.toggle('focus'); focusBtn.textContent=document.body.classList.contains('focus')?'Exit focus':'Focus viewer';});}
 (function(){
 const host=document.getElementById('viewerHost');
 if(!host) return;
