@@ -8,7 +8,7 @@
 <div id="stage"><div id="loader"><div class="panel"><h2>Loading CV…</h2><p>Displaying in <span id="count" class="count">3</span>s</p><p class="muted">If it stalls, use Download above.</p></div></div>
 <iframe id="viewer" title="CV Viewer" src="https://drive.google.com/file/d/1y1CKlgp58-sz9mriJUU50ASc72BsCz7L/preview" allow="autoplay" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
 <script>
-const v=document.getElementById('viewer'),l=document.getElementById('loader'),c=document.getElementById('count');let n=0,ok=false,done=false;
+const v=document.getElementById('viewer'),l=document.getElementById('loader'),c=document.getElementById('count');let n=3,ok=false,done=false;
 const t=setInterval(()=>{n-=1;c.textContent=Math.max(0,n);if(n<=0){clearInterval(t);done=true;show()}},1e3);
 v.addEventListener('load',()=>{ok=true;show()});
 function show(){if(done&&ok){l.style.display='none';v.style.display='block'}
