@@ -30,6 +30,36 @@ See https://github.com/adobe-type-tools/cmap-resources
 <!-- This snippet is used in production (included from viewer.html) -->
 <link rel="resource" type="application/l10n" href="locale/locale.json">
 <script>
+  /* Drop only the noisy PDF.js startup info line */
+  (function () {
+    try {
+      const origInfo = (console && console.info) ? console.info.bind(console) : null;
+      const origLog = (console && console.log) ? console.log.bind(console) : null;
+      if (!origInfo && !origLog) return;
+
+      function isPdfjsStartupMsg(args) {
+        const first = args && args[0];
+        const text = (typeof first === 'string') ? first : (first && first.message) ? first.message : '';
+        // Matches: "PDF <hash> [...] (PDF.js: x.y.z [build])"
+        return typeof text === 'string' && text.includes('(PDF.js:') && text.startsWith('PDF ');
+      }
+
+      if (origInfo) {
+        console.info = function (...args) {
+          if (isPdfjsStartupMsg(args)) return;
+          origInfo(...args);
+        };
+      }
+      if (origLog) {
+        console.log = function (...args) {
+          if (isPdfjsStartupMsg(args)) return;
+          origLog(...args);
+        };
+      }
+    } catch (_) { }
+  })();
+</script>
+<script>
   (function () {
     try {
       const origWarn = (console && console.warn) ? console.warn.bind(console) : null;
