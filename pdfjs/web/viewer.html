@@ -45,9 +45,22 @@ See https://github.com/adobe-type-tools/cmap-resources
 
 <script src="../build/pdf.mjs" type="module"></script>
 <script type="module">
-  import { setVerbosity, VerbosityLevel } from "../build/pdf.mjs";
-  // Reduce PDF.js logging to errors only (suppresses TT font warnings, etc.)
-  setVerbosity(VerbosityLevel.ERRORS);
+  import * as pdfjsLib from "../build/pdf.mjs";
+  // Prefer setVerbosity if available; otherwise fall back to assigning verbosity when exposed.
+  try {
+    const VerbosityLevel = pdfjsLib.VerbosityLevel || pdfjsLib.verbosityLevels || { ERRORS: 0, WARNINGS: 1, INFOS: 5 };
+    if (typeof pdfjsLib.setVerbosity === 'function') {
+      pdfjsLib.setVerbosity(VerbosityLevel.ERRORS);
+    } else if (typeof pdfjsLib.verbosity !== 'undefined') {
+      pdfjsLib.verbosity = VerbosityLevel.ERRORS;
+    }
+    // Best-effort: also set worker/global options if present in this build.
+    if (pdfjsLib.GlobalWorkerOptions && typeof pdfjsLib.GlobalWorkerOptions.verbosity !== 'undefined') {
+      pdfjsLib.GlobalWorkerOptions.verbosity = VerbosityLevel.ERRORS;
+    }
+  } catch (e) {
+    // Silently ignore if API surface differs in this build; viewer will still work.
+  }
 </script>
 
     <link rel="stylesheet" href="viewer.css">
@@ -455,7 +468,7 @@ See https://github.com/adobe-type-tools/cmap-resources
           </div>
           <div class="row">
             <form onsubmit="return false">
-              <input type="password" id="password" class="toolbarField">
+              <input type="password" id="password" class="toolbarField" autocomplete="new-password">
             </form>
           </div>
           <div class="buttonRow">
