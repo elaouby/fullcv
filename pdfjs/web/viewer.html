@@ -29,6 +29,19 @@ See https://github.com/adobe-type-tools/cmap-resources
 
 <!-- This snippet is used in production (included from viewer.html) -->
 <link rel="resource" type="application/l10n" href="locale/locale.json">
+<script>
+  (function () {
+    const originalWarn = console.warn;
+    console.warn = function (...args) {
+      const msg = args[0] ? args[0].toString() : "";
+      // Suppress only these harmless warnings
+      if (msg.includes("Password field is not contained in a form")) return;
+      if (msg.includes("TT: undefined function")) return;
+      // Otherwise, show normally
+      originalWarn.apply(console, args);
+    };
+  })();
+</script>
 <script src="../build/pdf.mjs" type="module"></script>
 
     <link rel="stylesheet" href="viewer.css">
