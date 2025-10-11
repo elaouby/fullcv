@@ -42,7 +42,13 @@ See https://github.com/adobe-type-tools/cmap-resources
     };
   })();
 </script>
+
 <script src="../build/pdf.mjs" type="module"></script>
+<script type="module">
+  import { setVerbosity, VerbosityLevel } from "../build/pdf.mjs";
+  // Reduce PDF.js logging to errors only (suppresses TT font warnings, etc.)
+  setVerbosity(VerbosityLevel.ERRORS);
+</script>
 
     <link rel="stylesheet" href="viewer.css">
 
@@ -448,7 +454,9 @@ See https://github.com/adobe-type-tools/cmap-resources
             <label for="password" id="passwordText" data-l10n-id="pdfjs-password-label"></label>
           </div>
           <div class="row">
-            <input type="password" id="password" class="toolbarField">
+            <form onsubmit="return false">
+              <input type="password" id="password" class="toolbarField">
+            </form>
           </div>
           <div class="buttonRow">
             <button id="passwordCancel" class="dialogButton" type="button"><span data-l10n-id="pdfjs-password-cancel-button"></span></button>
