@@ -22,15 +22,20 @@
 
 (function () {
   try {
-    const _warn = console && console.warn ? console.warn.bind(console) : null;
-    if (_warn) {
-      console.warn = function (...args) {
-        const msg = args[0] ? String(args[0]) : '';
-        if (msg.includes('TT: undefined function')) return; // suppress benign font warnings
-        _warn.apply(console, args);
-      };
+    const origWarn = (console && console.warn) ? console.warn.bind(console) : null;
+    if (!origWarn) return;
+
+    function shouldDrop(args) {
+      const first = args && args[0];
+      const text = (typeof first === 'string') ? first : (first && first.message) ? first.message : '';
+      return text.includes('TT: undefined function') || text.includes('Warning: TT: undefined function');
     }
-  } catch (e) { /* ignore */ }
+
+    console.warn = function (...args) {
+      if (shouldDrop(args)) return; // drop TT warnings only
+      origWarn(...args);
+    };
+  } catch (_) { }
 })();
 
 /**

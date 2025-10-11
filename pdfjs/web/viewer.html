@@ -31,15 +31,21 @@ See https://github.com/adobe-type-tools/cmap-resources
 <link rel="resource" type="application/l10n" href="locale/locale.json">
 <script>
   (function () {
-    const originalWarn = console.warn;
-    console.warn = function (...args) {
-      const msg = args[0] ? args[0].toString() : "";
-      // Suppress only these harmless warnings
-      if (msg.includes("Password field is not contained in a form")) return;
-      if (msg.includes("TT: undefined function")) return;
-      // Otherwise, show normally
-      originalWarn.apply(console, args);
-    };
+    try {
+      const origWarn = (console && console.warn) ? console.warn.bind(console) : null;
+      if (!origWarn) return;
+
+      function shouldDrop(args) {
+        const first = args && args[0];
+        const text = (typeof first === 'string') ? first : (first && first.message) ? first.message : '';
+        return text.includes('TT: undefined function') || text.includes('Warning: TT: undefined function');
+      }
+
+      console.warn = function (...args) {
+        if (shouldDrop(args)) return;
+        origWarn(...args);
+      };
+    } catch (_) { }
   })();
 </script>
 
