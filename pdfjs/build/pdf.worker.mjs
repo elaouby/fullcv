@@ -20,6 +20,19 @@
  * JavaScript code in this page
  */
 
+(function () {
+  try {
+    const _warn = console && console.warn ? console.warn.bind(console) : null;
+    if (_warn) {
+      console.warn = function (...args) {
+        const msg = args[0] ? String(args[0]) : '';
+        if (msg.includes('TT: undefined function')) return; // suppress benign font warnings
+        _warn.apply(console, args);
+      };
+    }
+  } catch (e) { /* ignore */ }
+})();
+
 /**
  * pdfjsVersion = 5.4.296
  * pdfjsBuild = f56dc8601
