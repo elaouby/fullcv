@@ -46,8 +46,8 @@ nav.actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto
     <a class="btn" href="tel:+97470707652" aria-label="Call"><img src="media/Call.svg" alt="Call">Call</a>
     <a class="btn" href="mailto:amr@elaouby.com" aria-label="Email"><img src="media/Mail.svg" alt="Email">Email</a>
     <a class="btn" href="https://wa.me/97470707652" target="_blank" rel="noopener" aria-label="WhatsApp"><img src="media/Whatsapp.svg" alt="WhatsApp">Whatsapp</a>
-    <a class="btn" href="https://drive.google.com/uc?export=download&id=1y1CKlgp58-sz9mriJUU50ASc72BsCz7L" download aria-label="Download PDF"><img src="media/PDF.svg" alt="PDF">↓ PDF</a>
-    <a class="btn" href="https://docs.google.com/document/d/111xKlab0gXXBKDoMXxDhlMtPEc3gJEH2/export?format=docx" download aria-label="Download Word"><img src="media/Word.svg" alt="Word">↓ Word</a>
+    <a class="btn" href="https://drive.google.com/uc?export=download&id=10FgveSVb4nGlBMADjZSUhOXapCM7otLa" download aria-label="Download PDF"><img src="media/PDF.svg" alt="PDF">↓ PDF</a>
+    <a class="btn" href="https://docs.google.com/document/d/12KScsnez8BHTuNesNRh9xrhe5y1eo2oq/export?format=docx" download aria-label="Download Word"><img src="media/Word.svg" alt="Word">↓ Word</a>
     <a class="btn" href="https://linkedin.com/in/elaouby" target="_blank" rel="noopener" aria-label="LinkedIn"><img src="media/Linkedin.svg" alt="LinkedIn">LinkedIn</a>
   </nav>
 </header>
@@ -59,7 +59,7 @@ nav.actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto
 const host=document.getElementById('viewerHost');
 if(!host) return;
 // Source PDF (currently first-party). Swap to the proxy URL once set up.
-const pdfURL='/Elaouby-CV.pdf';
+const pdfURL='/Elaouby-CV-Full.pdf';
 const pdfABS=(location.origin||(location.protocol+'//'+location.host))+pdfURL;
 // Use the same self-hosted PDF.js viewer on all platforms for consistency.
 const ifr=document.createElement('iframe');
@@ -70,5 +70,5 @@ ifr.setAttribute('referrerpolicy','no-referrer');
 host.appendChild(ifr);
 })();
 </script>
-<noscript><div style="padding:12px;border-top:1px solid #e5e7eb">JavaScript required. <a href="https://drive.google.com/uc?export=download&id=1y1CKlgp58-sz9mriJUU50ASc72BsCz7L">Download the PDF</a>.</div></noscript>
+<noscript><div style="padding:12px;border-top:1px solid #e5e7eb">JavaScript required. <a href="https://drive.google.com/uc?export=download&id=10FgveSVb4nGlBMADjZSUhOXapCM7otLa">Download the PDF</a>.</div></noscript>
 </body></html>
