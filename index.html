@@ -1,0 +1,74 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Amr Elaouby</title>
+<link rel="icon" type="image/svg+xml" href="media/cv.svg">
+<meta name="robots" content="noindex,follow"/>
+<style>:root{color-scheme:light dark}html,body{height:100%}body{margin:0;display:flex;flex-direction:column;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}header{padding:8px 10px;border-bottom:1px solid #e5e7eb;display:grid;grid-template-columns:1fr auto;align-items:stretch;gap:10px}
+.btn{
+  padding:4px 7px;
+  border:1px solid #333;
+  background:#fff;
+  border-radius:8px;
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+  color:#111827;
+  font-size:.75rem;
+  line-height:1;
+  white-space:nowrap;
+}
+.btn svg{width:16px;height:16px;fill:#111827;flex-shrink:0}
+.btn img{width:11px;height:11px;object-fit:contain;flex-shrink:0}
+.title{display:flex;flex-direction:column;justify-content:center;gap:6px}
+.title strong{font-size:1.3rem}
+nav.actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:26px;gap:6px;align-content:center;width:min(520px,100%)}
+@media(max-width:600px){
+  header{grid-template-columns:1.2fr 1fr;gap:6px;padding:8px}
+  .title strong{font-size:1.5rem}
+  nav.actions{width:100%;grid-template-columns:repeat(3,1fr);grid-auto-rows:24px;gap:5px}
+  .btn{padding:3px 6px;font-size:.7rem}
+  .btn img{width:10px;height:10px}
+}
+#stage{touch-action:manipulation}
+#viewer{display:block;position:absolute;inset:0;width:100%;height:100%;border:0}
+#viewerHost{position:absolute;inset:0}
+#viewerHost iframe, #viewerHost object, #viewerHost embed{position:absolute;inset:0;width:100%;height:100%;border:0}
+@supports (-webkit-overflow-scrolling: touch){#stage{overflow:auto;-webkit-overflow-scrolling:touch}}
+#stage{position:relative;flex:1;min-height:0}
+.count{font-variant-numeric:tabular-nums;font-weight:700}</style>
+</head><body>
+<header>
+  <div class="title">
+    <strong>Amr Elaouby</strong>
+  </div>
+  <nav class="actions">
+    <a class="btn" href="tel:+97470707652" aria-label="Call"><img src="media/Call.svg" alt="Call">Call</a>
+    <a class="btn" href="mailto:amr@elaouby.com" aria-label="Email"><img src="media/Mail.svg" alt="Email">Email</a>
+    <a class="btn" href="https://wa.me/97470707652" target="_blank" rel="noopener" aria-label="WhatsApp"><img src="media/Whatsapp.svg" alt="WhatsApp">Whatsapp</a>
+    <a class="btn" href="https://drive.google.com/uc?export=download&id=1y1CKlgp58-sz9mriJUU50ASc72BsCz7L" download aria-label="Download PDF"><img src="media/PDF.svg" alt="PDF">↓ PDF</a>
+    <a class="btn" href="https://docs.google.com/document/d/111xKlab0gXXBKDoMXxDhlMtPEc3gJEH2/export?format=docx" download aria-label="Download Word"><img src="media/Word.svg" alt="Word">↓ Word</a>
+    <a class="btn" href="https://linkedin.com/in/elaouby" target="_blank" rel="noopener" aria-label="LinkedIn"><img src="media/Linkedin.svg" alt="LinkedIn">LinkedIn</a>
+  </nav>
+</header>
+<div id="stage">
+  <div id="viewerHost"></div>
+</div>
+<script>
+(function(){
+const host=document.getElementById('viewerHost');
+if(!host) return;
+// Source PDF (currently first-party). Swap to the proxy URL once set up.
+const pdfURL='/Elaouby-CV.pdf';
+const pdfABS=(location.origin||(location.protocol+'//'+location.host))+pdfURL;
+// Use the same self-hosted PDF.js viewer on all platforms for consistency.
+const ifr=document.createElement('iframe');
+ifr.id='viewer';
+ifr.src='/pdfjs/web/viewer.html?file='+encodeURIComponent(pdfABS);
+ifr.setAttribute('allow','fullscreen');
+ifr.setAttribute('referrerpolicy','no-referrer');
+host.appendChild(ifr);
+})();
+</script>
+<noscript><div style="padding:12px;border-top:1px solid #e5e7eb">JavaScript required. <a href="https://drive.google.com/uc?export=download&id=1y1CKlgp58-sz9mriJUU50ASc72BsCz7L">Download the PDF</a>.</div></noscript>
+</body></html>
